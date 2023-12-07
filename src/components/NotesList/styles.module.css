@@ -1,0 +1,27 @@
+.notesList {
+    border-top: 1px solid gray;
+    margin-top: 20px !important;
+}
+.tagsWraper {
+    display: flex !important;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+.tagClass {
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin-bottom: 0;
+    margin-right: 3px;
+    padding: 5px;
+    background: #808080;
+    color: #fff;
+    cursor: pointer;
+}
+
+.highlighted {
+    background: #add8e6;
+    color: #000;
+    box-shadow: 1px 1px 1px black;
+}

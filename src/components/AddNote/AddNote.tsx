@@ -1,8 +1,9 @@
 import { FC, useState } from "react";
 import { NoteItemType } from "../types";
-import { Button, TextField } from "@mui/material";
+import { Button, Container, TextField } from "@mui/material";
 import { executeDbSyncedAction } from "../../helpers/db";
 import { collectTags, formatNoteTags } from "../../helpers/tags";
+import styles from './styles.module.css';
 
 type Props = {
   addNoteItem: (noteItem: NoteItemType) => void,
@@ -24,41 +25,18 @@ export const AddNote: FC<Props> = ({ addNoteItem }) => {
   };
 
   return (
-    <form onSubmit={addNote} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-      <div style={{
-        width: '550px',
-        height: '3rem',
-        fontSize: '16px',
-        position: 'relative',
-        marginBottom: '20px',
-        marginRight: '10px'
-      }}
-      >
-        <TextField style={{
-          width: '100%',
-          position: 'absolute',
-          inset: '0',
-          zIndex: '1',
-          outline: 'none',
-          fontSize: '16px',
-          background: 'transparent',
-          WebkitTextFillColor: 'transparent',
-        }}
+    <form onSubmit={addNote} className={styles.formClass}>
+      <Container className={styles.inputContainer}>
+        <TextField className={styles.inputClass}
           value={note}
           onChange={(e) => setNote(e.target.value)}
           variant="outlined"
         />
-        <div style={{
-          paddingTop: '10px',
-          paddingLeft: '2px',
-          position: 'absolute',
-          margin: '10px 10px',
-        }}
-        >
+        <Container className={styles.inputRenderer}>
           {formatNoteTags(note)}
-        </div>
-      </div>
-      <Button variant="contained" onClick={addNote} style={{ height: '50px', marginBottom: '10px' }}>
+        </Container>
+      </Container>
+      <Button className={styles.addButton} variant="contained" onClick={addNote}>
         Add
       </Button>
     </form>

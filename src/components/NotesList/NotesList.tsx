@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from './styles.module.css';
 
 import {
   Button,
@@ -48,18 +49,9 @@ export default function NotesList() {
         Notes
       </Typography>
       <AddNote addNoteItem={addNoteItem} />
-      <Container maxWidth="sm" style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', marginBottom: '16px' }}>
+      <Container maxWidth="sm" className={styles.tagsWraper}>
         {uniqueTags.map(tag => {
-          return <p
-            style={{
-              border: '1px solid gray',
-              borderRadius: '5px',
-              marginBottom: '0',
-              marginRight: '3px',
-              padding: '5px',
-              backgroundColor: selectedTags.includes(tag) ? '#add8e6' : 'transparent',
-              cursor: 'pointer'
-            }}
+          return <p className={`${styles.tagClass} ${selectedTags.includes(tag) ? styles.highlighted : ' '}`}
             onClick={() => updateSelectedTags(tag)}>
             {tag}
           </p>
@@ -68,7 +60,7 @@ export default function NotesList() {
       <Button variant="contained" onClick={() => setSelectedTags([])}>
         Remove all filters
       </Button>
-      <List style={{ borderTop: '1px solid gray', marginTop: '20px' }}>
+      <List className={styles.notesList}>
         {
           filterNotesByTags().map((note: NoteItemType) => (<NoteItem noteItem={note} deleteNote={deleteNote} editItem={editItem} />))}
       </List>

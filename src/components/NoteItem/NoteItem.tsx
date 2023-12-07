@@ -3,6 +3,7 @@
   import { Button, Container, ListItem, ListItemSecondaryAction, ListItemText, TextField } from "@mui/material";
   import { collectTags, formatNoteTags } from "../../helpers/tags";
   import { executeDbSyncedAction } from "../../helpers/db";
+  import styles from './styles.module.css';
 
   type Props = {
     noteItem: NoteItemType,
@@ -41,7 +42,7 @@
       <>
         {!editMode
           ? (
-            <ListItem style={{display: 'flex', width: '400px', overflow:'auto'}} key={noteItem.id}>
+            <ListItem className={styles.notesList} key={noteItem.id}>
               <ListItemText primary={formatNoteTags(noteItem.text)} />
               <ListItemSecondaryAction>
                 <Button onClick={() => setEditMode(true)}>Edit</Button>
@@ -49,41 +50,18 @@
               </ListItemSecondaryAction>
             </ListItem>
           ) : (
-            <form onSubmit={updateNote} style={{ display: 'flex', alignItems: 'center' }}>
-              <div style={{
-                width: '550px',
-                height: '3rem',
-                fontSize: '16px',
-                position: 'relative',
-                marginBottom: '20px',
-                marginRight: '10px',
-              }}
-              >
-                <TextField style={{
-                  width: '100%',
-                  position: 'absolute',
-                  inset: '0',
-                  zIndex: '1',
-                  outline: 'none',
-                  fontSize: '16px',
-                  background: 'transparent',
-                  WebkitTextFillColor: 'transparent',
-                }}
+            <form onSubmit={updateNote} className={styles.formClass}>
+              <Container className={styles.inputContainer}>
+                <TextField className={styles.inputClass}
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   variant="outlined"
                 />
-                <div style={{
-                  paddingTop: '10px',
-                  paddingLeft: '2px',
-                  position: 'absolute',
-                  margin: '10px 10px',
-                }}
-                >
+                <Container className={styles.inputRenderer}>
                   {formatNoteTags(inputValue)}
-                </div>
-              </div>
-              <Container style={{ display: 'flex', justifyContent: 'space-between', maxWidth: '220px', paddingRight: '0px' }}>
+                </Container>
+              </Container>
+              <Container className={styles.updButtonWraper}>
                 <Button variant="contained" onClick={updateNote}>
                   Update
                 </Button>

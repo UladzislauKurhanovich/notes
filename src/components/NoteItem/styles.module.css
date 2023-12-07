@@ -1,0 +1,48 @@
+.notesList {
+  display: flex!important;
+  width: 400px;
+  overflow: auto;
+}
+
+.formClass {
+    display: flex!important;
+    align-items: center;
+}
+
+.inputContainer {
+    position: relative!important;
+    font-size: 16px;
+    width: 550px;
+    height: 3rem;
+    margin-bottom: 20px;
+    margin-right: 10px!important;
+  }
+  
+  .inputClass {
+    width: 100%;
+    position: absolute!important;
+    inset: 0;
+    z-index: 1;
+    outline: none;
+    font-size: 16px;
+    background: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .inputRenderer {
+    font-weight: 400;
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    letter-spacing: 0.00938em;
+    font-size: 16px;
+    position: absolute!important;
+    padding: 10px 0 0 2px!important;
+    left: 2px;
+    margin: 10px 10px!important;
+  }
+
+  .updButtonWraper {
+    display: flex!important;
+    justify-content: space-between;
+    max-width: 220px;
+    padding-right: 0px!important;
+  }
